@@ -1,0 +1,3 @@
+com\example\integration\UserIntegrationTest.class
+com\example\service\UserServiceTest.class
+com\example\controller\UserControllerTest.class

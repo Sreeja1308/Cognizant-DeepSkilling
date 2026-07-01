@@ -1,0 +1,26 @@
+2026-06-24 19:08:25.234 [com.example.LoggingExample.main()] ERROR com.example.LoggingExample:25 - This is an ERROR message - Critical issue needs immediate attention
+2026-06-24 19:08:25.238 [com.example.LoggingExample.main()] WARN  com.example.LoggingExample:26 - This is a WARNING message - Potential issue to be aware of
+2026-06-24 19:08:25.239 [com.example.LoggingExample.main()] INFO  com.example.LoggingExample:27 - This is an INFO message - General application information
+2026-06-24 19:08:25.240 [com.example.LoggingExample.main()] DEBUG com.example.LoggingExample:28 - This is a DEBUG message - Detailed information for debugging
+2026-06-24 19:08:25.241 [com.example.LoggingExample.main()] DEBUG com.example.LoggingExample:67 - Dividing 10 by 0
+2026-06-24 19:08:25.245 [com.example.LoggingExample.main()] ERROR com.example.LoggingExample:71 - Division error: Cannot divide by zero
+java.lang.ArithmeticException: / by zero
+	at com.example.LoggingExample.divide(LoggingExample.java:69)
+	at com.example.LoggingExample.main(LoggingExample.java:35)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.codehaus.mojo.exec.AbstractExecJavaBase.executeMainMethod(AbstractExecJavaBase.java:402)
+	at org.codehaus.mojo.exec.ExecJavaMojo.executeMainMethod(ExecJavaMojo.java:142)
+	at org.codehaus.mojo.exec.AbstractExecJavaBase.doExecClassLoader(AbstractExecJavaBase.java:377)
+	at org.codehaus.mojo.exec.AbstractExecJavaBase.lambda$execute$0(AbstractExecJavaBase.java:287)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+2026-06-24 19:08:25.248 [com.example.LoggingExample.main()] ERROR com.example.LoggingExample:37 - Division by zero error occurred: / by zero
+2026-06-24 19:08:25.249 [com.example.LoggingExample.main()] WARN  com.example.LoggingExample:81 - User input is null - using default value
+2026-06-24 19:08:25.250 [com.example.LoggingExample.main()] WARN  com.example.LoggingExample:85 - User input is empty - ignoring
+2026-06-24 19:08:25.251 [com.example.LoggingExample.main()] INFO  com.example.LoggingExample:88 - Processing user input: John Doe
+2026-06-24 19:08:25.251 [com.example.LoggingExample.main()] DEBUG com.example.LoggingExample:95 - Executing query on table 'users': SELECT * FROM users
+2026-06-24 19:08:25.251 [com.example.LoggingExample.main()] INFO  com.example.LoggingExample:97 - Successfully executed query on table: users
+2026-06-24 19:08:25.252 [com.example.LoggingExample.main()] DEBUG com.example.LoggingExample:104 - Making API call to: https://api.example.com/users
+2026-06-24 19:08:25.252 [com.example.LoggingExample.main()] INFO  com.example.LoggingExample:106 - API call successful: https://api.example.com/users - Status: 200
+2026-06-24 19:08:25.252 [com.example.LoggingExample.main()] DEBUG com.example.LoggingExample:104 - Making API call to: https://api.example.com/invalid
+2026-06-24 19:08:25.252 [com.example.LoggingExample.main()] WARN  com.example.LoggingExample:108 - API call failed with client error: https://api.example.com/invalid - Status: 404
