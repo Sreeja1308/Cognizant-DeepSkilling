@@ -1,0 +1,14 @@
+C:\Users\linga\OneDrive\Documents\Desktop\Cogniant-DeepSkilling\Module-6-Spring_Data_JPA_with_Spring_Boot,Hibernate\2.spring-data-jpa-handson\src\main\java\com\cognizant\ormlearn\service\SkillService.java
+C:\Users\linga\OneDrive\Documents\Desktop\Cogniant-DeepSkilling\Module-6-Spring_Data_JPA_with_Spring_Boot,Hibernate\2.spring-data-jpa-handson\src\main\java\com\cognizant\ormlearn\model\Employee.java
+C:\Users\linga\OneDrive\Documents\Desktop\Cogniant-DeepSkilling\Module-6-Spring_Data_JPA_with_Spring_Boot,Hibernate\2.spring-data-jpa-handson\src\main\java\com\cognizant\ormlearn\model\Department.java
+C:\Users\linga\OneDrive\Documents\Desktop\Cogniant-DeepSkilling\Module-6-Spring_Data_JPA_with_Spring_Boot,Hibernate\2.spring-data-jpa-handson\src\main\java\com\cognizant\ormlearn\repository\EmployeeRepository.java
+C:\Users\linga\OneDrive\Documents\Desktop\Cogniant-DeepSkilling\Module-6-Spring_Data_JPA_with_Spring_Boot,Hibernate\2.spring-data-jpa-handson\src\main\java\com\cognizant\ormlearn\model\Skill.java
+C:\Users\linga\OneDrive\Documents\Desktop\Cogniant-DeepSkilling\Module-6-Spring_Data_JPA_with_Spring_Boot,Hibernate\2.spring-data-jpa-handson\src\main\java\com\cognizant\ormlearn\repository\SkillRepository.java
+C:\Users\linga\OneDrive\Documents\Desktop\Cogniant-DeepSkilling\Module-6-Spring_Data_JPA_with_Spring_Boot,Hibernate\2.spring-data-jpa-handson\src\main\java\com\cognizant\ormlearn\repository\DepartmentRepository.java
+C:\Users\linga\OneDrive\Documents\Desktop\Cogniant-DeepSkilling\Module-6-Spring_Data_JPA_with_Spring_Boot,Hibernate\2.spring-data-jpa-handson\src\main\java\com\cognizant\ormlearn\model\Stock.java
+C:\Users\linga\OneDrive\Documents\Desktop\Cogniant-DeepSkilling\Module-6-Spring_Data_JPA_with_Spring_Boot,Hibernate\2.spring-data-jpa-handson\src\main\java\com\cognizant\ormlearn\OrmLearnApplication.java
+C:\Users\linga\OneDrive\Documents\Desktop\Cogniant-DeepSkilling\Module-6-Spring_Data_JPA_with_Spring_Boot,Hibernate\2.spring-data-jpa-handson\src\main\java\com\cognizant\ormlearn\model\Country.java
+C:\Users\linga\OneDrive\Documents\Desktop\Cogniant-DeepSkilling\Module-6-Spring_Data_JPA_with_Spring_Boot,Hibernate\2.spring-data-jpa-handson\src\main\java\com\cognizant\ormlearn\service\EmployeeService.java
+C:\Users\linga\OneDrive\Documents\Desktop\Cogniant-DeepSkilling\Module-6-Spring_Data_JPA_with_Spring_Boot,Hibernate\2.spring-data-jpa-handson\src\main\java\com\cognizant\ormlearn\repository\StockRepository.java
+C:\Users\linga\OneDrive\Documents\Desktop\Cogniant-DeepSkilling\Module-6-Spring_Data_JPA_with_Spring_Boot,Hibernate\2.spring-data-jpa-handson\src\main\java\com\cognizant\ormlearn\service\DepartmentService.java
+C:\Users\linga\OneDrive\Documents\Desktop\Cogniant-DeepSkilling\Module-6-Spring_Data_JPA_with_Spring_Boot,Hibernate\2.spring-data-jpa-handson\src\main\java\com\cognizant\ormlearn\repository\CountryRepository.java
