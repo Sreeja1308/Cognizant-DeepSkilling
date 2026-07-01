@@ -1,0 +1,5 @@
+com\example\OrderServiceTest.class
+com\example\UserServiceTest.class
+com\example\MyServiceTest.class
+com\example\PaymentServiceTest.class
+com\example\NotificationServiceTest.class
