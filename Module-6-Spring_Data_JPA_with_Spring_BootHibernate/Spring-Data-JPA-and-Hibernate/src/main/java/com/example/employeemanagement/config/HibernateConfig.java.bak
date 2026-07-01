@@ -1,0 +1,52 @@
+package com.example.employeemanagement.config;
+
+import org.springframework.boot.autoconfigure.orm.jpa.HibernateProperties;
+import org.springframework.boot.autoconfigure.orm.jpa.HibernateSettings;
+import org.springframework.boot.autoconfigure.orm.jpa.JpaProperties;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
+import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
+
+import javax.sql.DataSource;
+import java.util.HashMap;
+import java.util.Map;
+
+@Configuration
+public class HibernateConfig {
+
+    @Bean
+    public LocalContainerEntityManagerFactoryBean entityManagerFactory(
+            DataSource dataSource,
+            JpaProperties jpaProperties,
+            HibernateProperties hibernateProperties) {
+        
+        LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
+        em.setDataSource(dataSource);
+        em.setPackagesToScan("com.example.employeemanagement.entity");
+        
+        HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
+        em.setJpaVendorAdapter(vendorAdapter);
+        
+        // Hibernate-specific properties (without caching)
+        Map<String, Object> properties = new HashMap<>();
+        properties.put("hibernate.show_sql", true);
+        properties.put("hibernate.format_sql", true);
+        properties.put("hibernate.use_sql_comments", true);
+        
+        // Exercise 10: Batch Processing Configuration
+        properties.put("hibernate.jdbc.batch_size", 20);
+        properties.put("hibernate.order_updates", true);
+        properties.put("hibernate.order_inserts", true);
+        properties.put("hibernate.jdbc.fetch_size", 100);
+        
+        // Remove caching configuration to avoid dependency issues
+        // properties.put("hibernate.cache.use_second_level_cache", true);
+        // properties.put("hibernate.cache.region.factory_class", 
+        //     "org.hibernate.cache.ehcache.EhCacheRegionFactory");
+        
+        em.setJpaPropertyMap(properties);
+        
+        return em;
+    }
+}
