@@ -1,0 +1,25 @@
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: 978653204471-ef00c7vko61imuo3h8jbbd64c9qsqb08.apps.googleusercontent.com
+            client-secret: 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
+            scope:
+              - openid
+              - profile
+              - email
+      resourceserver:
+        jwt:
+          issuer-uri: https://accounts.google.com
+    jwt:
+      secret: YOUR_SECRET_KEY_MUST_BE_AT_LEAST_32_CHARACTERS_LONG
+
+server:
+  port: 8080
+
+logging:
+  level:
+    org.springframework.security: DEBUG
+    org.springframework.web: DEBUG
