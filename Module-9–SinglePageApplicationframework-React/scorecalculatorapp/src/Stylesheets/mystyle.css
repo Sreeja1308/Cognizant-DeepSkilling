@@ -1,0 +1,43 @@
+.score-container {
+    background-color: #f0f8ff;
+    border: 2px solid #007bff;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 400px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.score-container h2 {
+    color: #007bff;
+    text-align: center;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 10px;
+}
+
+.student-details {
+    font-size: 18px;
+    line-height: 1.8;
+}
+
+.student-details p {
+    margin: 8px 0;
+    padding: 5px 10px;
+    background-color: #ffffff;
+    border-radius: 5px;
+}
+
+.student-details strong {
+    color: #333;
+    width: 120px;
+    display: inline-block;
+}
+
+.student-details p:last-child {
+    background-color: #007bff;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    padding: 10px;
+    margin-top: 10px;
+}
