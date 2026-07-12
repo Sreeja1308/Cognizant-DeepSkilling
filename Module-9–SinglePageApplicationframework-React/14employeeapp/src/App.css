@@ -1,0 +1,27 @@
+.App {
+  text-align: center;
+}
+
+/* Additional global styles */
+button {
+  font-family: inherit;
+}
+
+/* Hover effects for cards */
+.employee-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .header-content {
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .theme-toggle {
+    width: 100%;
+    justify-content: center;
+  }
+}
