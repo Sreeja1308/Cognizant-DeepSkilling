@@ -1,7 +1,6 @@
 import axios from 'axios';
 import GitClient from './GitClient';
 
-// Mock axios module
 jest.mock('axios');
 
 describe('Git Client Tests', () => {
@@ -12,7 +11,6 @@ describe('Git Client Tests', () => {
     beforeEach(() => {
         gitClient = new GitClient();
         
-        // Mock data for repositories
         mockRepositories = [
             {
                 id: 1,
@@ -46,7 +44,6 @@ describe('Git Client Tests', () => {
             }
         ];
 
-        // Mock data for user details
         mockUserDetails = {
             login: 'techiesyed',
             id: 12345,
@@ -60,19 +57,14 @@ describe('Git Client Tests', () => {
         };
     });
 
-    // Test 1: Should return repository names for techiesyed
     test('should return repository names for techiesyed', async () => {
-        // Mock axios.get to return mock data
         axios.get.mockResolvedValue({ data: mockRepositories });
 
-        // Call the method
         const repositories = await gitClient.getRepositories('techiesyed');
 
-        // Verify axios was called with correct URL
         expect(axios.get).toHaveBeenCalledWith('https://api.github.com/users/techiesyed/repos');
         expect(axios.get).toHaveBeenCalledTimes(1);
 
-        // Verify the returned data matches mock data
         expect(repositories).toEqual(mockRepositories);
         expect(repositories).toHaveLength(3);
         expect(repositories[0].name).toBe('react-app');
@@ -80,18 +72,14 @@ describe('Git Client Tests', () => {
         expect(repositories[2].name).toBe('python-scripts');
     });
 
-    // Test 2: Should handle API error gracefully
     test('should handle API error gracefully', async () => {
-        // Mock axios.get to reject with error
         const errorMessage = 'Network Error';
         axios.get.mockRejectedValue(new Error(errorMessage));
 
-        // Call the method and expect it to throw
         await expect(gitClient.getRepositories('invaliduser')).rejects.toThrow(errorMessage);
         expect(axios.get).toHaveBeenCalledWith('https://api.github.com/users/invaliduser/repos');
     });
 
-    // Test 3: Should return user details
     test('should return user details', async () => {
         axios.get.mockResolvedValue({ data: mockUserDetails });
 
@@ -103,7 +91,6 @@ describe('Git Client Tests', () => {
         expect(userDetails.name).toBe('Syed Techies');
     });
 
-    // Test 4: Should return repository details
     test('should return repository details', async () => {
         const mockRepoDetails = {
             id: 1,
@@ -123,7 +110,6 @@ describe('Git Client Tests', () => {
         expect(repoDetails.name).toBe('react-app');
     });
 
-    // Test 5: Should handle empty repository list
     test('should handle empty repository list', async () => {
         axios.get.mockResolvedValue({ data: [] });
 
@@ -134,7 +120,6 @@ describe('Git Client Tests', () => {
         expect(axios.get).toHaveBeenCalledWith('https://api.github.com/users/emptyuser/repos');
     });
 
-    // Test 6: Should handle network timeout
     test('should handle network timeout', async () => {
         const timeoutError = new Error('timeout of 5000ms exceeded');
         timeoutError.code = 'ECONNABORTED';
@@ -144,7 +129,6 @@ describe('Git Client Tests', () => {
         expect(axios.get).toHaveBeenCalledWith('https://api.github.com/users/techiesyed/repos');
     });
 
-    // Test 7: Should handle 404 error (user not found)
     test('should handle 404 error (user not found)', async () => {
         const notFoundError = new Error('Request failed with status code 404');
         notFoundError.response = { status: 404 };
@@ -154,13 +138,12 @@ describe('Git Client Tests', () => {
         expect(axios.get).toHaveBeenCalledWith('https://api.github.com/users/nonexistentuser');
     });
 
-    // Test 8: Should verify axios is mocked
     test('should verify axios is mocked', () => {
         expect(jest.isMockFunction(axios.get)).toBe(true);
     });
 });
 
-// Console output summary
+
 console.log('\n📊 Git Client Test Suite Summary:');
 console.log('✅ All tests passed successfully!');
 console.log('📝 Total tests: 8');
