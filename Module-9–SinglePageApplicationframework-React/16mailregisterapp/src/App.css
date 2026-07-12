@@ -1,0 +1,13 @@
+.App {
+  min-height: 100vh;
+}
+
+/* Smooth transitions for form fields */
+input {
+  transition: all 0.3s ease;
+}
+
+input:focus {
+  border-color: #667eea !important;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1) !important;
+}
