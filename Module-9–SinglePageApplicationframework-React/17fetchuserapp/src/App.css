@@ -1,0 +1,14 @@
+.App {
+  min-height: 100vh;
+}
+
+/* Button hover effects */
+button:hover {
+  transform: scale(1.02);
+  opacity: 0.9;
+}
+
+/* Smooth transitions */
+* {
+  transition: all 0.3s ease;
+}
