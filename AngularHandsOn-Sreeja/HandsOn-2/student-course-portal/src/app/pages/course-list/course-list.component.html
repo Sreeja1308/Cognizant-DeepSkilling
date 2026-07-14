@@ -1,0 +1,15 @@
+<div style="padding: 2rem;">
+  <h2>Available Courses</h2>
+  
+  <div style="margin: 1rem 0;">
+    <app-course-card 
+      *ngFor="let course of courses" 
+      [course]="course"
+      (enrollRequested)="onEnroll($event)">
+    </app-course-card>
+  </div>
+
+  <p *ngIf="selectedCourseId" style="color: #2ecc71; margin-top: 1rem;">
+    Selected course ID: {{ selectedCourseId }}
+  </p>
+</div>

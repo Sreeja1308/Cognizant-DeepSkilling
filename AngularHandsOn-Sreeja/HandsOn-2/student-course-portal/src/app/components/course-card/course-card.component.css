@@ -1,0 +1,12 @@
+:host {
+  display: block;
+}
+
+div {
+  background-color: white;
+  transition: box-shadow 0.3s ease;
+}
+
+div:hover {
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}

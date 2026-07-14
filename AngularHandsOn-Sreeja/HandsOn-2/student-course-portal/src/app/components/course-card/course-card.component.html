@@ -1,0 +1,10 @@
+<div *ngIf="course" style="border: 1px solid #ddd; padding: 1rem; border-radius: 8px; margin: 0.5rem 0; background: white;">
+  <h3>{{ course.name }}</h3>
+  <p><strong>Code:</strong> {{ course.code }}</p>
+  <p><strong>Credits:</strong> {{ course.credits }}</p>
+  <button 
+    (click)="onEnroll()"
+    style="padding: 0.5rem 1rem; background: #2ecc71; color: white; border: none; border-radius: 4px; cursor: pointer;">
+    Enroll
+  </button>
+</div>
