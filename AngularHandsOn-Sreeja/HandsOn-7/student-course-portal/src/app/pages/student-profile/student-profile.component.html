@@ -1,0 +1,31 @@
+<div style="padding: 2rem; max-width: 800px; margin: 0 auto;">
+  <h2>Student Profile</h2>
+  <div style="background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+    <h3>Enrolled Courses</h3>
+    
+    <div *ngIf="enrolledCourses.length === 0" style="color: #666; padding: 1rem 0;">
+      You are not enrolled in any courses yet.
+    </div>
+    
+    <div *ngFor="let course of enrolledCourses" style="border-bottom: 1px solid #eee; padding: 0.75rem 0;">
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <div>
+          <strong>{{ course.name }}</strong>
+          <span style="color: #666; margin-left: 1rem;">{{ course.code }}</span>
+        </div>
+        <div>
+          <span style="color: #666;">{{ course.credits }} credits</span>
+          <span [ngSwitch]="course.gradeStatus" style="margin-left: 1rem;">
+            <span *ngSwitchCase="'passed'" style="color: #2ecc71;">✓ Passed</span>
+            <span *ngSwitchCase="'failed'" style="color: #e74c3c;">✗ Failed</span>
+            <span *ngSwitchDefault style="color: #95a5a6;">⏳ Pending</span>
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    <div *ngIf="enrolledCourses.length > 0" style="margin-top: 1rem; padding-top: 1rem; border-top: 2px solid #eee;">
+      <strong>Total Credits: {{ getTotalCredits() }}</strong>
+    </div>
+  </div>
+</div>
