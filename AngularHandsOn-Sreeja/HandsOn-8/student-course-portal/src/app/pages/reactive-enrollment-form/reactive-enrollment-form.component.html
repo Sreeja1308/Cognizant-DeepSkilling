@@ -1,0 +1,174 @@
+<div style="padding: 2rem; max-width: 600px; margin: 0 auto;">
+  <h2>Reactive Enrollment Request Form</h2>
+  <p style="color: #666; margin-bottom: 2rem;">Fill in the details below to request enrollment in a course.</p>
+
+  <!-- Success Message -->
+  <div *ngIf="submitted" style="background: #d4edda; color: #155724; padding: 1rem; border-radius: 4px; margin-bottom: 1rem; border: 1px solid #c3e6cb;">
+    Enrollment request submitted successfully!
+  </div>
+
+  <form [formGroup]="enrollForm" (ngSubmit)="onSubmit()">
+    
+    <!-- Student Name -->
+    <div style="margin-bottom: 1.5rem;">
+      <label for="studentName" style="display: block; margin-bottom: 0.5rem; font-weight: bold;">Student Name</label>
+      <input 
+        type="text" 
+        id="studentName" 
+        formControlName="studentName"
+        placeholder="Enter your full name"
+        style="width: 100%; padding: 0.75rem; border: 1px solid #ddd; border-radius: 4px; box-sizing: border-box;">
+      
+      <!-- Error messages for studentName -->
+      <div *ngIf="enrollForm.get('studentName')?.touched && enrollForm.get('studentName')?.invalid" style="margin-top: 0.25rem;">
+        <span *ngIf="enrollForm.get('studentName')?.errors?.['required']" style="color: #e74c3c; font-size: 0.875rem;">
+          Name is required
+        </span>
+        <span *ngIf="enrollForm.get('studentName')?.errors?.['minlength']" style="color: #e74c3c; font-size: 0.875rem;">
+          Name must be at least 3 characters
+        </span>
+      </div>
+    </div>
+
+    <!-- Student Email with Async Validator -->
+    <div style="margin-bottom: 1.5rem;">
+      <label for="studentEmail" style="display: block; margin-bottom: 0.5rem; font-weight: bold;">Student Email</label>
+      <input 
+        type="email" 
+        id="studentEmail" 
+        formControlName="studentEmail"
+        placeholder="Enter your email address"
+        style="width: 100%; padding: 0.75rem; border: 1px solid #ddd; border-radius: 4px; box-sizing: border-box;">
+      
+      <!-- Loading indicator for async validation -->
+      <div *ngIf="enrollForm.get('studentEmail')?.pending" style="margin-top: 0.25rem;">
+        <span style="color: #3498db; font-size: 0.875rem;">Checking email availability...</span>
+      </div>
+      
+      <!-- Error messages for studentEmail -->
+      <div *ngIf="enrollForm.get('studentEmail')?.touched && enrollForm.get('studentEmail')?.invalid" style="margin-top: 0.25rem;">
+        <span *ngIf="enrollForm.get('studentEmail')?.errors?.['required']" style="color: #e74c3c; font-size: 0.875rem;">
+          Email is required
+        </span>
+        <span *ngIf="enrollForm.get('studentEmail')?.errors?.['email']" style="color: #e74c3c; font-size: 0.875rem;">
+          Please enter a valid email address
+        </span>
+        <span *ngIf="enrollForm.get('studentEmail')?.errors?.['emailTaken']" style="color: #e74c3c; font-size: 0.875rem;">
+          This email is already taken. Please use a different email.
+        </span>
+      </div>
+    </div>
+
+    <!-- Course ID with Custom Validator -->
+    <div style="margin-bottom: 1.5rem;">
+      <label for="courseId" style="display: block; margin-bottom: 0.5rem; font-weight: bold;">Course ID</label>
+      <input 
+        type="text" 
+        id="courseId" 
+        formControlName="courseId"
+        placeholder="Enter course ID (e.g., CS101)"
+        style="width: 100%; padding: 0.75rem; border: 1px solid #ddd; border-radius: 4px; box-sizing: border-box;">
+      
+      <!-- Error messages for courseId -->
+      <div *ngIf="enrollForm.get('courseId')?.touched && enrollForm.get('courseId')?.invalid" style="margin-top: 0.25rem;">
+        <span *ngIf="enrollForm.get('courseId')?.errors?.['required']" style="color: #e74c3c; font-size: 0.875rem;">
+          Course ID is required
+        </span>
+        <span *ngIf="enrollForm.get('courseId')?.errors?.['noCourseCode']" style="color: #e74c3c; font-size: 0.875rem;">
+          Course code starting with XX is not allowed.
+        </span>
+      </div>
+    </div>
+
+    <!-- Preferred Semester -->
+    <div style="margin-bottom: 1.5rem;">
+      <label for="preferredSemester" style="display: block; margin-bottom: 0.5rem; font-weight: bold;">Preferred Semester</label>
+      <select 
+        id="preferredSemester" 
+        formControlName="preferredSemester"
+        style="width: 100%; padding: 0.75rem; border: 1px solid #ddd; border-radius: 4px; box-sizing: border-box;">
+        <option value="Odd">Odd</option>
+        <option value="Even">Even</option>
+      </select>
+      
+      <!-- Error messages for preferredSemester -->
+      <div *ngIf="enrollForm.get('preferredSemester')?.touched && enrollForm.get('preferredSemester')?.invalid" style="margin-top: 0.25rem;">
+        <span *ngIf="enrollForm.get('preferredSemester')?.errors?.['required']" style="color: #e74c3c; font-size: 0.875rem;">
+          Semester selection is required
+        </span>
+      </div>
+    </div>
+
+    <!-- Agree to Terms -->
+    <div style="margin-bottom: 1.5rem;">
+      <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+        <input 
+          type="checkbox" 
+          formControlName="agreeToTerms"
+          style="width: 18px; height: 18px;">
+        <span>I agree to the terms and conditions</span>
+      </label>
+      
+      <!-- Error messages for agreeToTerms -->
+      <div *ngIf="enrollForm.get('agreeToTerms')?.touched && enrollForm.get('agreeToTerms')?.invalid" style="margin-top: 0.25rem;">
+        <span *ngIf="enrollForm.get('agreeToTerms')?.errors?.['requiredTrue']" style="color: #e74c3c; font-size: 0.875rem;">
+          You must agree to the terms
+        </span>
+      </div>
+    </div>
+
+    <!-- FormArray for Additional Courses -->
+    <div style="margin-bottom: 1.5rem; border-top: 1px solid #eee; padding-top: 1rem;">
+      <h4>Additional Courses</h4>
+      <p style="color: #666; font-size: 0.875rem;">Add additional courses you want to enroll in.</p>
+      
+      <div formArrayName="additionalCourses">
+        <div *ngFor="let ctrl of additionalCourses.controls; let i=index" style="display: flex; gap: 0.5rem; margin-bottom: 0.5rem; align-items: center;">
+          <input 
+            [formControlName]="i" 
+            placeholder="Enter course ID"
+            style="flex: 1; padding: 0.5rem; border: 1px solid #ddd; border-radius: 4px;">
+          <button 
+            type="button" 
+            (click)="removeCourse(i)"
+            style="padding: 0.5rem 1rem; background: #e74c3c; color: white; border: none; border-radius: 4px; cursor: pointer;">
+            Remove
+          </button>
+        </div>
+      </div>
+      
+      <button 
+        type="button" 
+        (click)="addCourse()"
+        style="padding: 0.5rem 1rem; background: #3498db; color: white; border: none; border-radius: 4px; cursor: pointer;">
+        Add Another Course
+      </button>
+    </div>
+
+    <!-- Buttons -->
+    <div style="display: flex; gap: 1rem; margin-top: 1rem;">
+      <button 
+        type="submit" 
+        [disabled]="enrollForm.invalid"
+        style="padding: 0.75rem 2rem; background: #2ecc71; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 1rem;">
+        Submit
+      </button>
+      
+      <button 
+        type="button" 
+        (click)="onReset()"
+        style="padding: 0.75rem 2rem; background: #e74c3c; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 1rem;">
+        Reset
+      </button>
+    </div>
+  </form>
+
+  <!-- Display submitted form values -->
+  <div *ngIf="formValue" style="margin-top: 2rem; padding: 1rem; background: #f8f9fa; border-radius: 4px; border: 1px solid #ddd;">
+    <h4>Submitted Form Data</h4>
+    <p><strong>Form Value (excludes disabled):</strong></p>
+    <pre style="background: white; padding: 0.5rem; border-radius: 4px; overflow-x: auto;">{{ formValue | json }}</pre>
+    <p><strong>Raw Form Value (includes all):</strong></p>
+    <pre style="background: white; padding: 0.5rem; border-radius: 4px; overflow-x: auto;">{{ rawFormValue | json }}</pre>
+  </div>
+</div>
