@@ -1,0 +1,144 @@
+<div style="padding: 2rem; max-width: 600px; margin: 0 auto;">
+  <h2>Enrollment Request Form</h2>
+  <p style="color: #666; margin-bottom: 2rem;">Fill in the details below to request enrollment in a course.</p>
+
+  <!-- Success Message -->
+  <div *ngIf="submitted" style="background: #d4edda; color: #155724; padding: 1rem; border-radius: 4px; margin-bottom: 1rem; border: 1px solid #c3e6cb;">
+    Enrollment request submitted successfully!
+  </div>
+
+  <form #enrollForm="ngForm" (ngSubmit)="onSubmit(enrollForm)">
+    
+    <!-- Student Name -->
+    <div style="margin-bottom: 1.5rem;">
+      <label for="studentName" style="display: block; margin-bottom: 0.5rem; font-weight: bold;">Student Name</label>
+      <input 
+        type="text" 
+        id="studentName" 
+        name="studentName" 
+        [(ngModel)]="studentName"
+        #nameCtrl="ngModel"
+        required 
+        minlength="3"
+        placeholder="Enter your full name"
+        style="width: 100%; padding: 0.75rem; border: 1px solid #ddd; border-radius: 4px; box-sizing: border-box;">
+      
+      <!-- Error messages for studentName -->
+      <div *ngIf="nameCtrl.touched && nameCtrl.invalid" style="margin-top: 0.25rem;">
+        <span *ngIf="nameCtrl.errors?.['required']" style="color: #e74c3c; font-size: 0.875rem;">
+          Name is required
+        </span>
+        <span *ngIf="nameCtrl.errors?.['minlength']" style="color: #e74c3c; font-size: 0.875rem;">
+          Name must be at least 3 characters
+        </span>
+      </div>
+    </div>
+
+    <!-- Student Email -->
+    <div style="margin-bottom: 1.5rem;">
+      <label for="studentEmail" style="display: block; margin-bottom: 0.5rem; font-weight: bold;">Student Email</label>
+      <input 
+        type="email" 
+        id="studentEmail" 
+        name="studentEmail" 
+        [(ngModel)]="studentEmail"
+        #emailCtrl="ngModel"
+        required 
+        email
+        placeholder="Enter your email address"
+        style="width: 100%; padding: 0.75rem; border: 1px solid #ddd; border-radius: 4px; box-sizing: border-box;">
+      
+      <!-- Error messages for studentEmail -->
+      <div *ngIf="emailCtrl.touched && emailCtrl.invalid" style="margin-top: 0.25rem;">
+        <span *ngIf="emailCtrl.errors?.['required']" style="color: #e74c3c; font-size: 0.875rem;">
+          Email is required
+        </span>
+        <span *ngIf="emailCtrl.errors?.['email']" style="color: #e74c3c; font-size: 0.875rem;">
+          Please enter a valid email address
+        </span>
+      </div>
+    </div>
+
+    <!-- Course ID -->
+    <div style="margin-bottom: 1.5rem;">
+      <label for="courseId" style="display: block; margin-bottom: 0.5rem; font-weight: bold;">Course ID</label>
+      <input 
+        type="number" 
+        id="courseId" 
+        name="courseId" 
+        [(ngModel)]="courseId"
+        #courseCtrl="ngModel"
+        required
+        placeholder="Enter course ID (e.g., 101)"
+        style="width: 100%; padding: 0.75rem; border: 1px solid #ddd; border-radius: 4px; box-sizing: border-box;">
+      
+      <!-- Error messages for courseId -->
+      <div *ngIf="courseCtrl.touched && courseCtrl.invalid" style="margin-top: 0.25rem;">
+        <span *ngIf="courseCtrl.errors?.['required']" style="color: #e74c3c; font-size: 0.875rem;">
+          Course ID is required
+        </span>
+      </div>
+    </div>
+
+    <!-- Preferred Semester -->
+    <div style="margin-bottom: 1.5rem;">
+      <label for="preferredSemester" style="display: block; margin-bottom: 0.5rem; font-weight: bold;">Preferred Semester</label>
+      <select 
+        id="preferredSemester" 
+        name="preferredSemester" 
+        [(ngModel)]="preferredSemester"
+        #semesterCtrl="ngModel"
+        required
+        style="width: 100%; padding: 0.75rem; border: 1px solid #ddd; border-radius: 4px; box-sizing: border-box;">
+        <option value="">Select a semester</option>
+        <option value="Odd">Odd</option>
+        <option value="Even">Even</option>
+      </select>
+      
+      <!-- Error messages for preferredSemester -->
+      <div *ngIf="semesterCtrl.touched && semesterCtrl.invalid" style="margin-top: 0.25rem;">
+        <span *ngIf="semesterCtrl.errors?.['required']" style="color: #e74c3c; font-size: 0.875rem;">
+          Semester selection is required
+        </span>
+      </div>
+    </div>
+
+    <!-- Agree to Terms -->
+    <div style="margin-bottom: 1.5rem;">
+      <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+        <input 
+          type="checkbox" 
+          name="agreeToTerms" 
+          [(ngModel)]="agreeToTerms"
+          #termsCtrl="ngModel"
+          required
+          style="width: 18px; height: 18px;">
+        <span>I agree to the terms and conditions</span>
+      </label>
+      
+      <!-- Error messages for agreeToTerms -->
+      <div *ngIf="termsCtrl.touched && termsCtrl.invalid" style="margin-top: 0.25rem;">
+        <span *ngIf="termsCtrl.errors?.['required']" style="color: #e74c3c; font-size: 0.875rem;">
+          You must agree to the terms
+        </span>
+      </div>
+    </div>
+
+    <!-- Buttons -->
+    <div style="display: flex; gap: 1rem; margin-top: 1rem;">
+      <button 
+        type="submit" 
+        [disabled]="enrollForm.invalid"
+        style="padding: 0.75rem 2rem; background: #2ecc71; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 1rem;">
+        Submit
+      </button>
+      
+      <button 
+        type="button" 
+        (click)="onReset(enrollForm)"
+        style="padding: 0.75rem 2rem; background: #e74c3c; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 1rem;">
+        Reset
+      </button>
+    </div>
+  </form>
+</div>

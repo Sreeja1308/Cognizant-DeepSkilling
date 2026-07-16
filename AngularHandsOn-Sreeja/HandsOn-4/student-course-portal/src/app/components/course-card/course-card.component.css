@@ -1,0 +1,28 @@
+:host {
+  display: block;
+}
+
+div {
+  background-color: white;
+  transition: all 0.3s ease;
+}
+
+div:hover {
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* ngClass styles */
+.card--enrolled {
+  background-color: #f0fdf4 !important;
+  border-color: #2ecc71 !important;
+}
+
+.card--full {
+  border-width: 2px;
+  border-color: #f39c12 !important;
+}
+
+.expanded {
+  min-height: 200px;
+  background-color: #f8f9fa !important;
+}
