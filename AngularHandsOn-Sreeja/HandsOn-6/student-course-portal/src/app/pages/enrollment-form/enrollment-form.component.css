@@ -1,0 +1,57 @@
+/* Form state CSS classes */
+input.ng-invalid.ng-touched,
+select.ng-invalid.ng-touched {
+  border-color: #e74c3c !important;
+  box-shadow: 0 0 0 2px rgba(231, 76, 60, 0.2);
+}
+
+input.ng-valid.ng-touched,
+select.ng-valid.ng-touched {
+  border-color: #2ecc71 !important;
+  box-shadow: 0 0 0 2px rgba(46, 204, 113, 0.2);
+}
+
+button[type="submit"]:disabled {
+  background: #95a5a6 !important;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+button[type="submit"]:not(:disabled):hover {
+  background: #27ae60 !important;
+}
+
+button[type="button"]:hover {
+  background: #c0392b !important;
+}
+
+/* Form container styling */
+form {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+label {
+  font-weight: 500;
+  color: #2c3e50;
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border-color: #3498db;
+  box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+}
+
+/* Style for the checkbox label */
+input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+
+input[type="checkbox"]:checked {
+  accent-color: #2ecc71;
+}

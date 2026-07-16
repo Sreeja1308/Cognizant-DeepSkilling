@@ -1,0 +1,30 @@
+<div style="padding: 2rem;">
+  <h2>Available Courses</h2>
+  
+  <!-- Loading state -->
+  <p *ngIf="isLoading" style="color: #3498db; font-size: 1.2rem;">Loading courses...</p>
+  
+  <!-- Course grid - shown when not loading -->
+  <div *ngIf="!isLoading" style="margin: 1rem 0;">
+    <!-- ngFor with trackBy for performance -->
+    <app-course-card 
+      *ngFor="let course of courses; let i = index; trackBy: trackByCourseId" 
+      [course]="course"
+      (enrollRequested)="onEnroll($event)">
+    </app-course-card>
+  </div>
+
+  <!-- No courses template -->
+  <ng-template #noCourses>
+    <p>No courses available.</p>
+  </ng-template>
+  
+  <!-- Show no courses message when courses array is empty -->
+  <div *ngIf="!isLoading && courses.length === 0; else noCourses">
+    <p>No courses available.</p>
+  </div>
+
+  <p *ngIf="selectedCourseId" style="color: #2ecc71; margin-top: 1rem;">
+    Selected course ID: {{ selectedCourseId }}
+  </p>
+</div>

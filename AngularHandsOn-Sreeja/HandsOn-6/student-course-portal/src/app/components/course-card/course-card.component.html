@@ -1,0 +1,49 @@
+<div *ngIf="course" 
+     [ngClass]="cardClasses" 
+     [ngStyle]="cardStyles"
+     appHighlight
+     style="border: 1px solid #ddd; padding: 1rem; border-radius: 8px; margin: 0.5rem 0; background: white; transition: all 0.3s ease;">
+
+  <h3>{{ course.name }}</h3>
+  <p><strong>Code:</strong> {{ course.code }}</p>
+  <p><strong>Credits:</strong> {{ course.credits | creditLabel }}</p>
+  
+  <!-- Grade status with ngSwitch -->
+  <div [ngSwitch]="course.gradeStatus">
+    <span *ngSwitchCase="'passed'" style="display: inline-block; padding: 0.25rem 0.75rem; background: #2ecc71; color: white; border-radius: 12px; font-size: 0.8rem;">
+      Passed
+    </span>
+    <span *ngSwitchCase="'failed'" style="display: inline-block; padding: 0.25rem 0.75rem; background: #e74c3c; color: white; border-radius: 12px; font-size: 0.8rem;">
+      Failed
+    </span>
+    <span *ngSwitchDefault style="display: inline-block; padding: 0.25rem 0.75rem; background: #95a5a6; color: white; border-radius: 12px; font-size: 0.8rem;">
+      Pending
+    </span>
+  </div>
+
+  <!-- Enrollment status -->
+  <div style="margin-top: 0.5rem;">
+    <span *ngIf="isEnrolled()" style="color: #2ecc71; font-weight: bold;">✓ Enrolled</span>
+  </div>
+
+  <div style="margin-top: 1rem; display: flex; gap: 0.5rem;">
+    <button 
+      (click)="onEnroll()"
+      style="padding: 0.5rem 1rem; background: #2ecc71; color: white; border: none; border-radius: 4px; cursor: pointer;">
+      {{ isEnrolled() ? 'Unenroll' : 'Enroll' }}
+    </button>
+    
+    <button 
+      (click)="toggleExpand()"
+      style="padding: 0.5rem 1rem; background: #3498db; color: white; border: none; border-radius: 4px; cursor: pointer;">
+      {{ isExpanded ? 'Hide Details' : 'Show Details' }}
+    </button>
+  </div>
+
+  <!-- Expanded content -->
+  <div *ngIf="isExpanded" style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #eee;">
+    <p><strong>Course ID:</strong> {{ course.id }}</p>
+    <p><strong>Full Description:</strong> This is a detailed description for {{ course.name }}.</p>
+    <p><strong>Prerequisites:</strong> Basic programming knowledge required.</p>
+  </div>
+</div>
