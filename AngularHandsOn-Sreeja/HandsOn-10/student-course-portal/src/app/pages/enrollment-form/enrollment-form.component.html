@@ -1,0 +1,102 @@
+<div class="enrollment-container">
+  <h2>Enrollment Request Form</h2>
+  
+  <div *ngIf="submitted" class="success-message">
+    Enrollment request submitted successfully!
+  </div>
+  
+  <form #enrollForm="ngForm" (ngSubmit)="onSubmit(enrollForm)" class="enrollment-form">
+    <div class="form-group">
+      <label for="studentName">Student Name</label>
+      <input 
+        type="text" 
+        id="studentName" 
+        name="studentName"
+        [(ngModel)]="studentName"
+        #nameCtrl="ngModel"
+        required 
+        minlength="3"
+        class="form-control"
+        [class.error]="nameCtrl.invalid && nameCtrl.touched">
+      <div *ngIf="nameCtrl.touched && nameCtrl.errors?.['required']" class="error-message">
+        Name is required
+      </div>
+      <div *ngIf="nameCtrl.touched && nameCtrl.errors?.['minlength']" class="error-message">
+        Name must be at least 3 characters
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <label for="studentEmail">Student Email</label>
+      <input 
+        type="email" 
+        id="studentEmail" 
+        name="studentEmail"
+        [(ngModel)]="studentEmail"
+        #emailCtrl="ngModel"
+        required 
+        email
+        class="form-control"
+        [class.error]="emailCtrl.invalid && emailCtrl.touched">
+      <div *ngIf="emailCtrl.touched && emailCtrl.errors?.['required']" class="error-message">
+        Email is required
+      </div>
+      <div *ngIf="emailCtrl.touched && emailCtrl.errors?.['email']" class="error-message">
+        Please enter a valid email address
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <label for="courseId">Course ID</label>
+      <input 
+        type="number" 
+        id="courseId" 
+        name="courseId"
+        [(ngModel)]="courseId"
+        #courseCtrl="ngModel"
+        required
+        class="form-control"
+        [class.error]="courseCtrl.invalid && courseCtrl.touched">
+      <div *ngIf="courseCtrl.touched && courseCtrl.errors?.['required']" class="error-message">
+        Course ID is required
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <label for="preferredSemester">Preferred Semester</label>
+      <select 
+        id="preferredSemester" 
+        name="preferredSemester"
+        [(ngModel)]="preferredSemester"
+        class="form-control">
+        <option value="Odd">Odd</option>
+        <option value="Even">Even</option>
+      </select>
+    </div>
+    
+    <div class="form-group checkbox-group">
+      <label for="agreeToTerms">
+        <input 
+          type="checkbox" 
+          id="agreeToTerms" 
+          name="agreeToTerms"
+          [(ngModel)]="agreeToTerms"
+          #termsCtrl="ngModel"
+          required>
+        I agree to the terms and conditions
+      </label>
+      <div *ngIf="termsCtrl.touched && termsCtrl.errors?.['required']" class="error-message">
+        You must agree to the terms
+      </div>
+    </div>
+    
+    <div class="form-actions">
+      <button type="submit" [disabled]="enrollForm.invalid" class="btn-submit">
+        Submit
+      </button>
+      <button type="button" (click)="resetForm()" class="btn-reset">
+        Reset
+      </button>
+    </div>
+  </form>
+</div>

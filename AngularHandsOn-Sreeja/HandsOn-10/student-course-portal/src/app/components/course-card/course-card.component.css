@@ -1,0 +1,109 @@
+.course-card {
+  border: 1px solid #ddd;
+  border-left-width: 4px;
+  border-radius: 8px;
+  padding: 16px;
+  margin: 10px;
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.course-card:hover {
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.card--enrolled {
+  background-color: #e8f5e9;
+}
+
+.card--full {
+  border-width: 2px;
+}
+
+.card--full.card--enrolled {
+  background-color: #c8e6c9;
+}
+
+.expanded {
+  min-height: 200px;
+  background-color: #f5f5f5;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.card-header h3 {
+  margin: 0;
+  color: #2c3e50;
+}
+
+.course-code {
+  background-color: #e0e0e0;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+}
+
+.card-body {
+  margin-bottom: 12px;
+}
+
+.badge {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.badge-passed {
+  background-color: #4caf50;
+  color: white;
+}
+
+.badge-failed {
+  background-color: #f44336;
+  color: white;
+}
+
+.badge-pending {
+  background-color: #9e9e9e;
+  color: white;
+}
+
+.card-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.card-actions button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: #3498db;
+  color: white;
+  transition: background-color 0.3s;
+}
+
+.card-actions button:disabled {
+  background-color: #bdc3c7;
+  cursor: not-allowed;
+}
+
+.card-actions button:hover:not(:disabled) {
+  background-color: #2980b9;
+}
+
+.card-details {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+}

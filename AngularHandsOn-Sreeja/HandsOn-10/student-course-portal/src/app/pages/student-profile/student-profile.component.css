@@ -1,0 +1,76 @@
+.profile-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h2 {
+  color: #2c3e50;
+  margin-bottom: 30px;
+}
+
+.profile-info {
+  background-color: #f8f9fa;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 30px;
+}
+
+.profile-info p {
+  margin: 10px 0;
+}
+
+.enrolled-courses {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.enrolled-courses h3 {
+  color: #2c3e50;
+  margin-bottom: 15px;
+}
+
+.enrolled-courses ul {
+  list-style: none;
+  padding: 0;
+}
+
+.enrolled-courses li {
+  padding: 12px;
+  margin: 8px 0;
+  background-color: #f8f9fa;
+  border-radius: 4px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.status {
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.status.passed {
+  background-color: #4caf50;
+  color: white;
+}
+
+.status.failed {
+  background-color: #f44336;
+  color: white;
+}
+
+.status.pending {
+  background-color: #ff9800;
+  color: white;
+}
+
+.no-courses {
+  text-align: center;
+  padding: 40px;
+  color: #7f8c8d;
+}

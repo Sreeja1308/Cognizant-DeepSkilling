@@ -1,0 +1,34 @@
+<div class="course-list-container">
+  <h2>Available Courses</h2>
+  
+  <div *ngIf="isLoading$ | async" class="loading">
+    <p>Loading courses...</p>
+  </div>
+  
+  <div *ngIf="error$ | async as error" class="error">
+    <p>{{ error }}</p>
+  </div>
+  
+  <ng-container *ngIf="!(isLoading$ | async) && !(error$ | async)">
+    <div *ngIf="(courses$ | async)?.length === 0" class="no-courses">
+      <p>No courses available.</p>
+    </div>
+    
+    <ng-template #noCourses>
+      <p>No courses available.</p>
+    </ng-template>
+    
+    <div class="course-grid">
+      <app-course-card
+        *ngFor="let course of courses$ | async; let i = index; trackBy: trackByCourseId"
+        [course]="course"
+        (enrollRequested)="onEnroll($event)"
+        (courseClick)="onCourseClick($event)">
+      </app-course-card>
+    </div>
+    
+    <div *ngIf="selectedCourseId" class="selected-course">
+      <p>Selected course ID: {{ selectedCourseId }}</p>
+    </div>
+  </ng-container>
+</div>

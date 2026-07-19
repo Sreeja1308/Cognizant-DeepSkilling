@@ -1,0 +1,109 @@
+<div class="reactive-enrollment-container">
+  <h2>Reactive Enrollment Form</h2>
+  
+  <div *ngIf="submitted" class="success-message">
+    Enrollment submitted successfully!
+  </div>
+  
+  <form [formGroup]="enrollForm" (ngSubmit)="onSubmit()" class="reactive-form">
+    <div class="form-group">
+      <label for="studentName">Student Name</label>
+      <input 
+        type="text" 
+        id="studentName" 
+        formControlName="studentName"
+        class="form-control"
+        [class.error]="enrollForm.get('studentName')?.invalid && enrollForm.get('studentName')?.touched">
+      <div *ngIf="enrollForm.get('studentName')?.touched && enrollForm.get('studentName')?.errors?.['required']" class="error-message">
+        Name is required
+      </div>
+      <div *ngIf="enrollForm.get('studentName')?.touched && enrollForm.get('studentName')?.errors?.['minlength']" class="error-message">
+        Name must be at least 3 characters
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <label for="studentEmail">Student Email</label>
+      <input 
+        type="email" 
+        id="studentEmail" 
+        formControlName="studentEmail"
+        class="form-control"
+        [class.error]="studentEmailControl.invalid && studentEmailControl.touched">
+      <div *ngIf="studentEmailControl.touched && studentEmailControl.errors?.['required']" class="error-message">
+        Email is required
+      </div>
+      <div *ngIf="studentEmailControl.touched && studentEmailControl.errors?.['email']" class="error-message">
+        Please enter a valid email address
+      </div>
+      <div *ngIf="studentEmailControl.touched && studentEmailControl.errors?.['emailTaken']" class="error-message">
+        This email is already taken
+      </div>
+      <div *ngIf="studentEmailControl.pending" class="info-message">
+        Checking email availability...
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <label for="courseId">Course ID</label>
+      <input 
+        type="text" 
+        id="courseId" 
+        formControlName="courseId"
+        class="form-control"
+        [class.error]="courseIdControl.invalid && courseIdControl.touched">
+      <div *ngIf="courseIdControl.touched && courseIdControl.errors?.['required']" class="error-message">
+        Course ID is required
+      </div>
+      <div *ngIf="courseIdControl.touched && courseIdControl.errors?.['noCourseCode']" class="error-message">
+        Course code starting with XX is not allowed
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <label for="preferredSemester">Preferred Semester</label>
+      <select 
+        id="preferredSemester" 
+        formControlName="preferredSemester"
+        class="form-control">
+        <option value="Odd">Odd</option>
+        <option value="Even">Even</option>
+      </select>
+    </div>
+    
+    <div class="form-group checkbox-group">
+      <label for="agreeToTerms">
+        <input 
+          type="checkbox" 
+          id="agreeToTerms" 
+          formControlName="agreeToTerms">
+        I agree to the terms and conditions
+      </label>
+      <div *ngIf="enrollForm.get('agreeToTerms')?.touched && enrollForm.get('agreeToTerms')?.errors?.['requiredTrue']" class="error-message">
+        You must agree to the terms
+      </div>
+    </div>
+    
+    <div class="form-group additional-courses">
+      <label>Additional Courses</label>
+      <div *ngFor="let ctrl of additionalCoursesControls; let i=index" class="course-item">
+        <input 
+          type="text" 
+          [formControl]="ctrl"
+          placeholder="Enter additional course ID"
+          class="form-control course-input">
+        <button type="button" (click)="removeCourse(i)" class="btn-remove">Remove</button>
+      </div>
+      <button type="button" (click)="addCourse()" class="btn-add">Add Another Course</button>
+    </div>
+    
+    <div class="form-actions">
+      <button type="submit" [disabled]="enrollForm.invalid" class="btn-submit">
+        Submit
+      </button>
+      <button type="button" (click)="resetForm()" class="btn-reset">
+        Reset
+      </button>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,25 @@
+<div class="profile-container">
+  <h2>Student Profile</h2>
+  
+  <div class="profile-info">
+    <p><strong>Name:</strong> John Doe</p>
+    <p><strong>Email:</strong> john.doe&#64;university.edu</p>
+    <p><strong>Student ID:</strong> S12345678</p>
+    <p><strong>Major:</strong> Computer Science</p>
+  </div>
+  
+  <div class="enrolled-courses">
+    <h3>Enrolled Courses</h3>
+    <div *ngIf="enrolledCourses.length === 0" class="no-courses">
+      <p>You are not enrolled in any courses yet.</p>
+    </div>
+    <ul *ngIf="enrolledCourses.length > 0">
+      <li *ngFor="let course of enrolledCourses">
+        {{ course.name }} ({{ course.code }}) - {{ course.credits }} credits
+        <span class="status" [ngClass]="course.gradeStatus">
+          {{ course.gradeStatus }}
+        </span>
+      </li>
+    </ul>
+  </div>
+</div>

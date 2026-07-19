@@ -1,0 +1,68 @@
+{
+  "courses": [
+    {
+      "id": 1,
+      "name": "Data Structures",
+      "code": "CS101",
+      "credits": 4,
+      "gradeStatus": "passed",
+      "enrolled": false,
+      "description": "Introduction to data structures and algorithms",
+      "instructor": "Dr. Smith",
+      "schedule": "MWF 10:00-10:50"
+    },
+    {
+      "id": 2,
+      "name": "Web Development",
+      "code": "CS201",
+      "credits": 3,
+      "gradeStatus": "pending",
+      "enrolled": false,
+      "description": "Full stack web development with modern frameworks",
+      "instructor": "Prof. Jones",
+      "schedule": "TTH 14:00-15:15"
+    },
+    {
+      "id": 3,
+      "name": "Database Systems",
+      "code": "CS301",
+      "credits": 3,
+      "gradeStatus": "failed",
+      "enrolled": false,
+      "description": "Relational and NoSQL database design",
+      "instructor": "Dr. Williams",
+      "schedule": "MWF 13:00-13:50"
+    },
+    {
+      "id": 4,
+      "name": "Machine Learning",
+      "code": "CS401",
+      "credits": 4,
+      "gradeStatus": "pending",
+      "enrolled": false,
+      "description": "Introduction to machine learning algorithms",
+      "instructor": "Prof. Brown",
+      "schedule": "TTH 10:00-11:15"
+    },
+    {
+      "id": 5,
+      "name": "Computer Networks",
+      "code": "CS501",
+      "credits": 3,
+      "gradeStatus": "passed",
+      "enrolled": false,
+      "description": "Computer networking fundamentals",
+      "instructor": "Dr. Davis",
+      "schedule": "MWF 15:00-15:50"
+    }
+  ],
+  "students": [
+    {
+      "id": 1,
+      "name": "John Doe",
+      "email": "john.doe@university.edu",
+      "major": "Computer Science"
+    }
+  ],
+  "enrollments": []
+}

@@ -1,0 +1,39 @@
+<div class="course-card" 
+     [ngClass]="cardClasses"
+     [ngStyle]="{'border-left-color': borderColor}"
+     (click)="onCardClick()"
+     appHighlight="lightyellow">
+  
+  <div class="card-header">
+    <h3>{{ course.name }}</h3>
+    <span class="course-code">{{ course.code }}</span>
+  </div>
+  
+  <div class="card-body">
+    <p>Credits: {{ course.credits | creditLabel }}</p>
+    <p>Status: 
+      <span class="badge" [ngSwitch]="course.gradeStatus">
+        <span *ngSwitchCase="'passed'" class="badge-passed">Passed</span>
+        <span *ngSwitchCase="'failed'" class="badge-failed">Failed</span>
+        <span *ngSwitchCase="'pending'" class="badge-pending">Pending</span>
+        <span *ngSwitchDefault>Unknown</span>
+      </span>
+    </p>
+  </div>
+  
+  <div class="card-actions">
+    <button (click)="onEnroll(); $event.stopPropagation()" 
+            [disabled]="course.enrolled">
+      {{ course.enrolled ? 'Enrolled' : 'Enroll' }}
+    </button>
+    <button (click)="toggleExpand(); $event.stopPropagation()">
+      {{ isExpanded ? 'Hide Details' : 'Show Details' }}
+    </button>
+  </div>
+  
+  <div *ngIf="isExpanded" class="card-details">
+    <p><strong>Full Description:</strong> {{ course.description || 'No description available.' }}</p>
+    <p><strong>Instructor:</strong> {{ course.instructor || 'TBD' }}</p>
+    <p><strong>Schedule:</strong> {{ course.schedule || 'TBD' }}</p>
+  </div>
+</div>
